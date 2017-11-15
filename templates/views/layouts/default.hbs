@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Project</title>
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link href="/styles/site.css" rel="stylesheet">
+
+		{{!-- This file provides the default styling for the KeystoneJS Content Editor
+			- only renders when user is logged in and admin--}}
+		{{{isAdminEditorCSS user}}}
+
+		{{!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+		//- Safely remove this block if you are not targeting IE8 --}}
+		<!--[if lt IE 9]>
+			<script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
+			<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+	</head>
+<body class="bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Navbar</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				{{# each navLinks}}
+					<li class='nav-item'>
+						<a class='nav-link {{#ifeq ../section key}}active{{else}} {{/ifeq}}' href="{{ href }}">{{ label }}</a>
+					</li>
+				{{/each}}
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				{{#if user}}
+						<a href="/keystone/signout" class="btn btn-outline-success my-2 my-sm-0">Sign out</a>
+					{{else}}
+						<a href="/keystone/signin" class="btn btn-outline-success my-2 my-sm-0" >Sign in</a>
+				{{/if}}
+			</form>
+		</div>
+	</nav> <!-- navigation -->
+	<div class="main-wrapper">
+		<!--
+			Flash messages allow you to display once-off status messages to users, e.g. form
+			validation errors, success messages, etc
+		-->
+		{{#if messages}}
+			<div id="flash-messages" class="container">
+				{{#if messages.info}}
+				<div class="alert alert-info">
+						{{{flashMessages messages.info}}}
+				</div>
+				{{/if}}
+				{{#if messages.success}}
+				<div class="alert alert-success">
+						{{{flashMessages messages.success}}}
+				</div>
+				{{/if}}
+				{{#if messages.warning}}
+				<div class="alert alert-warning">
+						{{{flashMessages messages.warning}}}
+				</div>
+				{{/if}}
+				{{#if messages.error}}
+				<div class="alert alert-danger">
+						{{{flashMessages messages.error}}}
+				</div>
+				{{/if}}
+			</div>
+		{{/if}}
+			<!-- The content block should contain the body of your template's content-->
+		{{{body}}}
+		</div>		 
+		<footer class="navbar navbar-dark bg-dark fixed-bottom">
+		 <a class="navbar-brand" href="http://keystonejs.com" target="_blank">KeystoneJS</a> 
+		</footer>
+		<script src="/js/shared.bundle.js"></script> 
+	</body>
+</html>
