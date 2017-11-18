@@ -2,7 +2,7 @@
 
 # Keystone Boilerplate (Webpack, Babel, ES6, Bootstrap 4):key: 
 
-## :wrench:Core Features: 
+## :wrench:Core Features:    
 * <a href="https://github.com/keystonejs/keystone">Keystone CMS</a>,
 * <a href="https://github.com/webpack">Webpack 2</a> for bundling,
 * <a href="https://github.com/expressjs/express">Express</a>,
